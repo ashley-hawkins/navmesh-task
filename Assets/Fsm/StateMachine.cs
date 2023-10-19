@@ -28,6 +28,8 @@ namespace Fsm
         }
         void UpdateAndHandleStateChange(UpdateType updateType)
         {
+            // Check for deferred state change request.
+            HandleDeferredStateChange();
             try
             {
                 if (updateType == UpdateType.Regular)
@@ -42,8 +44,6 @@ namespace Fsm
                 {
                     throw new ArgumentOutOfRangeException("updateType", updateType, "not a valid UpdateType");
                 }
-                // After the update, check for deferred state change request.
-                HandleDeferredStateChange();
             }
             catch (InstantStateChange stateChange)
             {
@@ -65,7 +65,7 @@ namespace Fsm
         /// <param name="shouldOverride">True if this should override any existing deferred state change.</param>
         public void ChangeStateDeferred(State<T> state, bool shouldOverride = false)
         {
-            if (NextState != null || shouldOverride)
+            if (NextState == null || shouldOverride)
             {
                 NextState = state;
             }

@@ -1,5 +1,6 @@
 namespace Fsm
 {
+    [System.Serializable]
     public abstract class State<T>
     {
         protected T stateMachine;

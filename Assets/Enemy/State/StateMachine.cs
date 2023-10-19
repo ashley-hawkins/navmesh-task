@@ -1,5 +1,6 @@
 ﻿namespace Enemy
 {
+    [System.Serializable]
     public class StateMachine : Fsm.StateMachine<StateMachine>
     {
         public Enemy Self { get; private set; }
@@ -9,7 +10,7 @@
 
             IdleState = new IdleState(this);
             AttackState = new AttackState(this);
-            ChangeState(IdleState);
+            ChangeStateDeferred(IdleState);
         }
 
         public IdleState IdleState;
