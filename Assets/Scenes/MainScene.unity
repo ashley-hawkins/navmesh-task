@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228e1092ffaeac2458e6b4fa204eda6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActivationDistance: 0
+  ActivationDistance: 999
   animator: {fileID: 0}
   agent: {fileID: 0}
   target: {fileID: 752441146}

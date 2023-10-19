@@ -23,6 +23,8 @@
             if (Self.WithinRange(1))
             {
                 Self.animator.SetTrigger("attack");
+                Self.agent.isStopped = true;
+                return;
             }
             Self.agent.destination = target.transform.position;
         }
