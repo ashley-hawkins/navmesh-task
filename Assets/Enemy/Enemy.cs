@@ -15,7 +15,8 @@ namespace Enemy
 
         public bool WithinRange(float range)
         {
-            return ((target.transform.position - transform.position).Scale(new Vector3(1, 0, 1))).sqrMagnitude <= (range * range);
+            // Multiplying by (1, 0, 1) removes Y component.
+            return Vector3.Scale((target.transform.position - transform.position), new Vector3(1, 0, 1)).sqrMagnitude <= (range * range);
         }
         public bool WithinActivationRange()
         {
