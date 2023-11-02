@@ -12,7 +12,18 @@ namespace Enemy
         [HideInInspector] public Animator animator;
         [HideInInspector] public NavMeshAgent agent;
         public GameObject target;
+        [HideInInspector] public bool shouldHandleAttack = false;
 
+        public float hurtboxSize = 1;
+
+        void AttackHit()
+        {
+            shouldHandleAttack = true;
+        }
+        void EndAttack()
+        {
+            agent.isStopped = false;
+        }
         public bool WithinRange(float range)
         {
             // Multiplying by (1, 0, 1) removes Y component.
